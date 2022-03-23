@@ -35,11 +35,11 @@ if($q && $q->execute()) {
                 //zamień date z bazy na timestamp 
                 $appointmentTimestamp = strtotime($appointmentDate);
                 //wyświetl guzik
-                echo "<button style=\"margin:10px\">";
+                echo "<a href=\"appointment.php?id=$appointmentId\" style=\"margin:10px; display:block\">";
                 //wyświetl termin w formacie dzień.miesiąc godzina:minuta)
                 echo date("j.m H:i", $appointmentTimestamp);
                 //zamknij guzik
-                echo "</button>";
+                echo "</a>";
             }
             echo "<br>";
         } else {
