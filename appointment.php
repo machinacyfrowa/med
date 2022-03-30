@@ -19,7 +19,7 @@ if(isset($_REQUEST['firstName']) && isset($_REQUEST['lastName'])
     $q->execute();
     $patientId = $db->insert_id;
     $q->prepare("INSERT INTO patientappointment VALUES (NULL, ?, ?)");
-    $q->bind_param("ii", $appointmentId, $patientId);
+    $q->bind_param("ii", $patientId, $appointmentId);
     $q->execute();
     echo "Zapisano na wizytę!";
 } else { 
