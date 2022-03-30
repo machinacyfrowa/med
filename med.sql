@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 30 Mar 2022, 09:32
+-- Czas generowania: 30 Mar 2022, 11:14
 -- Wersja serwera: 10.4.22-MariaDB
 -- Wersja PHP: 8.0.15
 
@@ -52,16 +52,17 @@ CREATE TABLE `patient` (
   `id` int(11) NOT NULL,
   `firstName` varchar(255) NOT NULL,
   `lastName` varchar(255) NOT NULL,
-  `phone` varchar(32) NOT NULL
+  `phone` varchar(32) NOT NULL,
+  `pesel` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Zrzut danych tabeli `patient`
 --
 
-INSERT INTO `patient` (`id`, `firstName`, `lastName`, `phone`) VALUES
-(1, 'Stefek', 'Burczymucha', '+48666666666'),
-(2, 'Edwin', 'Piatek', '+48789456123');
+INSERT INTO `patient` (`id`, `firstName`, `lastName`, `phone`, `pesel`) VALUES
+(1, 'Stefek', 'Burczymucha', '+48666666666', ''),
+(2, 'Edwin', 'Piatek', '+48789456123', '');
 
 -- --------------------------------------------------------
 
@@ -94,7 +95,8 @@ CREATE TABLE `staff` (
 INSERT INTO `staff` (`id`, `firstName`, `lastName`) VALUES
 (1, 'Jan', 'Kowalski'),
 (2, 'Adam', 'Nowak'),
-(3, 'Iwona', 'Tabletka');
+(3, 'Iwona', 'Tabletka'),
+(4, 'Piotr', 'Wierciszpara');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -153,7 +155,7 @@ ALTER TABLE `patientappointment`
 -- AUTO_INCREMENT dla tabeli `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Ograniczenia dla zrzutów tabel
