@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 23 Mar 2022, 12:24
+-- Czas generowania: 30 Mar 2022, 09:32
 -- Wersja serwera: 10.4.22-MariaDB
 -- Wersja PHP: 8.0.15
 
@@ -75,14 +75,6 @@ CREATE TABLE `patientappointment` (
   `appointment_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Zrzut danych tabeli `patientappointment`
---
-
-INSERT INTO `patientappointment` (`id`, `patient_id`, `appointment_id`) VALUES
-(1, 1, 1),
-(2, 2, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -126,7 +118,8 @@ ALTER TABLE `patient`
 --
 ALTER TABLE `patientappointment`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `appointment_id` (`appointment_id`);
+  ADD KEY `appointment_id` (`appointment_id`),
+  ADD KEY `patient_id` (`patient_id`);
 
 --
 -- Indeksy dla tabeli `staff`
@@ -171,6 +164,13 @@ ALTER TABLE `staff`
 --
 ALTER TABLE `appointment`
   ADD CONSTRAINT `appointment_ibfk_1` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`id`);
+
+--
+-- Ograniczenia dla tabeli `patientappointment`
+--
+ALTER TABLE `patientappointment`
+  ADD CONSTRAINT `patientappointment_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`),
+  ADD CONSTRAINT `patientappointment_ibfk_2` FOREIGN KEY (`appointment_id`) REFERENCES `appointment` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
