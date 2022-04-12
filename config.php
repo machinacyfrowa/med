@@ -2,6 +2,7 @@
 
 require('./vendor/autoload.php');
 
+$db = new mysqli("localhost", "root", "", "med");
 $smarty = new Smarty();
 
 $smarty->setTemplateDir('./smarty/templates');
