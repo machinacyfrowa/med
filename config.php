@@ -1,5 +1,6 @@
 <?php
 require_once('./model/Patient.class.php');
+require_once('./model/Staff.class.php');
 require('./vendor/autoload.php');
 
 $db = new mysqli("localhost", "root", "", "med");
