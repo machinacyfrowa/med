@@ -12,9 +12,6 @@ class Patient {
         global $db;
         $this->db = $db;
     }
-    function getId() : int {
-        return $this->id;
-    }
     function setFirstName(string $firstName) {
         $this->firstName = $firstName;
     }
@@ -37,10 +34,7 @@ class Patient {
     function save() : bool {
         $q = $this->db->prepare("INSERT INTO patient VALUES (NULL, ?, ?, ?, ?)");
         $q->bind_param("ssss", $this->firstName, $this->lastName, $this->phone, $this->pesel);
-        $result = $q->execute();
-        //pobierz id wstawionego pacjenta
-        $this->id = $this->db->insert_id;
-        return $result;
+        return $q->execute();
     }
     function load() {
         $q = $this->db->prepare("SELECT * FROM patient WHERE id = ? LIMIT 1");
